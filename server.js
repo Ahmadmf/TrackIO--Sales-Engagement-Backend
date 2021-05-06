@@ -4,6 +4,9 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 
 const authRoute = require("./routes/auth");
+const campaignRoute = require("./routes/campaign")
+const emailRoute = require("./routes/email")
+const prospectRoute = require("./routes/prospect");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -27,6 +30,9 @@ err => {
 
 
 app.use("/api/auth",authRoute);
+app.use("/api/campaigns",campaignRoute);
+app.use("/api/email",emailRoute);
+app.use("/api/prospects",prospectRoute);
 
 
 
