@@ -33,6 +33,15 @@ router.post('/sendCampaignEmail', (req, res) => {
             "subject: ", subject, "\n\n",
             message
         ].join('');
+        // var str = ["Content-Type: text/plain; charset=\"UTF-8\"\n",
+        //     "MIME-Version: 1.0\n",
+        //     "Content-Transfer-Encoding: 7bit\n",
+        //     "to: ", to, "\n",
+        //     "from: ", from, "\n",
+        //     "subject: ", subject, "\n",
+        //     "html: ", <p>jkf</p>, "\n\n",
+        //     message
+        // ].join('');
         
         //var encodedMail="mk";
         // var encodedMail = new Buffer(str).toString("base64").replace(/\+/g, '-').replace(/\//g, '_');
@@ -43,6 +52,9 @@ router.post('/sendCampaignEmail', (req, res) => {
       function sendMessage(auth) {
         const gmail = google.gmail({version: 'v1', auth});
         var raw = makeBody(emailData.receiverMail, 'ahmadf1788@gmail.com', emailData.subject, emailData.message);
+      
+
+
         gmail.users.messages.send({
             auth: auth,
             userId: 'me',

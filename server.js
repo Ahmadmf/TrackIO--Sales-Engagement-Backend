@@ -15,7 +15,23 @@ app.use(bodyParser.json());
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://localhost:27017/TrackioDB",{
+// mongoose.connect("mongodb://localhost:27017/TrackioDB",{
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// },
+// err => {
+//     if(!err){
+//         console.log("Connection Succeeded")
+//     }
+//     else{
+//         console.log("Error in Connection" + err)
+//     }
+// })
+
+// mongodb+srv://dbUser:<password>@cluster0.gthfr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+
+mongoose.connect("mongodb+srv://ahmadf:dbUser@cluster0.nyhym.mongodb.net/TrackIO?retryWrites=true&w=majority",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 },
