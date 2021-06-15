@@ -30,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // mongodb+srv://dbUser:<password>@cluster0.gthfr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
-
 mongoose.connect("mongodb+srv://ahmadf:dbUser@cluster0.nyhym.mongodb.net/TrackIO?retryWrites=true&w=majority",{
     useNewUrlParser: true,
     useUnifiedTopology: true

@@ -6,7 +6,7 @@ const {google} = require('googleapis');
 router.post('/sendCampaignEmail', (req, res) => {
     console.log("In Send Campaign Email");
     emailData=req.body.emailDetail;
-    console.log(emailData);
+   let emails=emailData.receiverMail.split("\n");
 
 
 
@@ -33,13 +33,13 @@ router.post('/sendCampaignEmail', (req, res) => {
             "subject: ", subject, "\n\n",
             message
         ].join('');
-        // var str = ["Content-Type: text/plain; charset=\"UTF-8\"\n",
+        // var str = ["Content-Type: text/html; charset=\"UTF-8\"\n",
         //     "MIME-Version: 1.0\n",
         //     "Content-Transfer-Encoding: 7bit\n",
         //     "to: ", to, "\n",
         //     "from: ", from, "\n",
-        //     "subject: ", subject, "\n",
-        //     "html: ", <p>jkf</p>, "\n\n",
+        //     "subject: ", subject, "\n\n",
+        //     "html: ",<p>kjnff</p>,"\n\n",
         //     message
         // ].join('');
         
@@ -51,7 +51,9 @@ router.post('/sendCampaignEmail', (req, res) => {
       
       function sendMessage(auth) {
         const gmail = google.gmail({version: 'v1', auth});
-        var raw = makeBody(emailData.receiverMail, 'ahmadf1788@gmail.com', emailData.subject, emailData.message);
+
+        for(var i=0;i<emails.length;i++){
+          var raw = makeBody(emails[i], 'ahmadf1788@gmail.com', emailData.subject, emailData.message);
       
 
 
@@ -64,6 +66,23 @@ router.post('/sendCampaignEmail', (req, res) => {
         }, function(err, response) {
             // res.send(err || response)
         });
+
+
+
+        }
+        // var raw = makeBody(emailData.receiverMail, 'ahmadf1788@gmail.com', emailData.subject, emailData.message);
+      
+
+
+        // gmail.users.messages.send({
+        //     auth: auth,
+        //     userId: 'me',
+        //     resource: {
+        //         raw: raw
+        //     }
+        // }, function(err, response) {
+        //     // res.send(err || response)
+        // });
       }
       
       
